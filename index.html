@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ms Micca · English 9 · The P.E.E. Lesson Archive</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500&family=Caveat:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0E0E0E;
+  --bg-soft: #141414;
+  --gold: #C9A227;
+  --gold-soft: #D4A24C;
+  --gold-dim: rgba(201, 162, 39, 0.25);
+  --gold-faint: rgba(201, 162, 39, 0.08);
+  --sand: #EAE4D9;
+  --sand-dim: rgba(234, 228, 217, 0.6);
+  --cream: #F3F0EB;
+  --charcoal: #1A1A1A;
+  --rule: rgba(234, 228, 217, 0.08);
+  --ease-quiet: cubic-bezier(.22, 1, .36, 1);
+  --ease-precise: cubic-bezier(.4, 0, .2, 1);
+  --ease-emphasis: cubic-bezier(.16, 1, .3, 1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--sand);
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.7'/%3E%3C/svg%3E");
+  opacity: 0.045;
+  pointer-events: none;
+  z-index: 100;
+  mix-blend-mode: overlay;
+}
+
+::selection { background: var(--gold); color: var(--bg); }
+
+/* ============ NAV ============ */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 50;
+  padding: 1.5rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(180deg, rgba(14,14,14,0.92) 0%, rgba(14,14,14,0) 100%);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.nav-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  font-style: italic;
+  color: var(--cream);
+  letter-spacing: 0.01em;
+}
+
+.nav-brand .gold { color: var(--gold); font-weight: 500; }
+
+.nav-meta {
+  font-size: 10px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--sand-dim);
+}
+
+@media (max-width: 600px) {
+  nav { padding: 1.25rem 1.5rem; }
+  .nav-meta { display: none; }
+}
+
+/* ============ HERO ============ */
+.hero {
+  min-height: 100vh;
+  padding: 9rem 2.5rem 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 11px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 3rem;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 800ms var(--ease-quiet) 200ms forwards;
+}
+
+.hero-eyebrow::after {
+  content: '';
+  display: inline-block;
+  width: 0;
+  height: 1px;
+  background: var(--gold);
+  animation: drawLine 900ms var(--ease-quiet) 1000ms forwards;
+}
+
+@keyframes drawLine { to { width: 3.5rem; } }
+
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-size: clamp(2.8rem, 7.2vw, 6.4rem);
+  line-height: 1.02;
+  letter-spacing: -0.012em;
+  color: var(--cream);
+  max-width: 18ch;
+  margin-bottom: 2.5rem;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeUp 1200ms var(--ease-emphasis) 400ms forwards;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--gold);
+  font-weight: 500;
+}
+
+.hero-sub {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--sand);
+  max-width: 54ch;
+  margin-bottom: 3.5rem;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1000ms var(--ease-quiet) 700ms forwards;
+}
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.05rem 2rem;
+  border: 1px solid var(--gold-dim);
+  color: var(--cream);
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  align-self: flex-start;
+  opacity: 0;
+  transform: translateY(16px);
+  animation: fadeUp 800ms var(--ease-quiet) 1000ms forwards;
+  transition: background 400ms var(--ease-quiet), color 400ms var(--ease-quiet), border-color 400ms var(--ease-quiet);
+}
+
+.hero-cta:hover {
+  background: var(--gold);
+  color: var(--bg);
+  border-color: var(--gold);
+}
+
+.hero-cta .arrow {
+  transition: transform 400ms var(--ease-quiet);
+  display: inline-block;
+}
+
+.hero-cta:hover .arrow { transform: translateX(4px); }
+
+@keyframes fadeUp { to { opacity: 1; transform: none; } }
+
+/* Hero seal */
+.hero-seal {
+  position: absolute;
+  top: 7rem;
+  right: 2.5rem;
+  width: 150px;
+  height: 150px;
+  opacity: 0;
+  animation: fadeIn 1500ms var(--ease-quiet) 1200ms forwards;
+}
+
+.hero-seal .seal-ring {
+  width: 100%;
+  height: 100%;
+  animation: spin-slow 40s linear infinite;
+  transform-origin: center;
+}
+
+.hero-seal .seal-center {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: var(--gold);
+  font-size: 1.7rem;
+  font-weight: 500;
+}
+
+@keyframes fadeIn { to { opacity: 1; } }
+@keyframes spin-slow { to { transform: rotate(360deg); } }
+
+@media (max-width: 880px) {
+  .hero-seal { width: 110px; height: 110px; top: 6rem; right: 1.5rem; }
+}
+@media (max-width: 600px) {
+  .hero-seal { display: none; }
+}
+
+.hero-corner {
+  position: absolute;
+  bottom: 3rem;
+  right: 2.5rem;
+  text-align: right;
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--sand-dim);
+  line-height: 1.9;
+  opacity: 0;
+  animation: fadeIn 1200ms var(--ease-quiet) 1400ms forwards;
+}
+
+@media (max-width: 600px) {
+  .hero-corner { display: none; }
+  .hero { padding: 8rem 1.5rem 4rem; }
+}
+
+/* ============ SECTIONS ============ */
+.section {
+  padding: 8rem 2.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 11px;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 2rem;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 700ms var(--ease-quiet), transform 700ms var(--ease-quiet);
+}
+
+.section-eyebrow::after {
+  content: '';
+  display: inline-block;
+  width: 0;
+  height: 1px;
+  background: var(--gold);
+  transition: width 800ms var(--ease-quiet) 300ms;
+}
+
+.is-in .section-eyebrow { opacity: 1; transform: none; }
+.is-in .section-eyebrow::after { width: 2.75rem; }
+
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-size: clamp(2.2rem, 5.2vw, 4.2rem);
+  line-height: 1.05;
+  color: var(--cream);
+  max-width: 22ch;
+  margin-bottom: 1.75rem;
+  letter-spacing: -0.008em;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1000ms var(--ease-emphasis) 100ms, transform 1000ms var(--ease-emphasis) 100ms;
+}
+
+.section-title em {
+  font-style: italic;
+  color: var(--gold);
+  font-weight: 500;
+}
+
+.is-in .section-title { opacity: 1; transform: none; }
+
+.section-lede {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--sand);
+  max-width: 60ch;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 900ms var(--ease-quiet) 300ms, transform 900ms var(--ease-quiet) 300ms;
+}
+
+.is-in .section-lede { opacity: 1; transform: none; }
+
+@media (max-width: 600px) {
+  .section { padding: 5rem 1.5rem; }
+}
+
+/* ============ P.E.E. FRAMEWORK ============ */
+.pee-section { border-top: 1px solid var(--rule); }
+
+.pee-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  margin-top: 5rem;
+  border-top: 1px solid var(--rule);
+}
+
+.pee-card {
+  padding: 3.5rem 2.5rem 3rem;
+  border-right: 1px solid var(--rule);
+  position: relative;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 900ms var(--ease-emphasis), transform 900ms var(--ease-emphasis);
+}
+
+.pee-card:last-child { border-right: none; }
+
+.is-in .pee-card { opacity: 1; transform: none; }
+.is-in .pee-card:nth-child(1) { transition-delay: 100ms; }
+.is-in .pee-card:nth-child(2) { transition-delay: 280ms; }
+.is-in .pee-card:nth-child(3) { transition-delay: 460ms; }
+
+.pee-num {
+  font-size: 10px;
+  letter-spacing: 0.35em;
+  color: var(--sand-dim);
+  margin-bottom: 2rem;
+}
+
+.pee-letter {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 6.5rem;
+  color: var(--gold);
+  line-height: 0.9;
+  margin-bottom: 1.25rem;
+}
+
+.pee-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.85rem;
+  color: var(--cream);
+  margin-bottom: 1.25rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.pee-desc {
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: var(--sand);
+  margin-bottom: 2.25rem;
+}
+
+.pee-rule {
+  width: 2rem;
+  height: 1px;
+  background: var(--gold-dim);
+  margin-bottom: 1.5rem;
+}
+
+.pee-example {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--gold-soft);
+  padding-left: 1rem;
+  border-left: 1px solid var(--gold-dim);
+}
+
+.pee-example .speaker {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-size: 9px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--sand-dim);
+  margin-top: 0.75rem;
+}
+
+@media (max-width: 900px) {
+  .pee-grid { grid-template-columns: 1fr; }
+  .pee-card { border-right: none; border-bottom: 1px solid var(--rule); padding: 3rem 0; }
+  .pee-card:last-child { border-bottom: none; }
+  .pee-card:last-child { padding-bottom: 0; }
+}
+
+/* ============ SCATTERED POSTCARDS ============ */
+.postcards-section {
+  border-top: 1px solid var(--rule);
+  background: var(--bg);
+}
+
+.scrapbook {
+  position: relative;
+  perspective: 2000px;
+  min-height: 780px;
+  margin-top: 5rem;
+}
+
+.polaroid {
+  position: absolute;
+  width: 240px;
+  background: var(--cream);
+  padding: 12px 12px 44px;
+  box-shadow: 0 20px 40px -10px rgba(0,0,0,0.45), 0 8px 16px -8px rgba(0,0,0,0.35);
+  opacity: 0;
+  transform: rotate(var(--r, 0deg)) translateY(40px);
+  transition: opacity 900ms var(--ease-emphasis),
+              transform 900ms var(--ease-emphasis),
+              box-shadow 500ms ease,
+              transition-delay 0ms;
+  transform-origin: center center;
+  cursor: pointer;
+  will-change: transform;
+}
+
+.scrapbook.is-in .polaroid {
+  opacity: 1;
+  transform: rotate(var(--r, 0deg));
+}
+
+.scrapbook.is-in .polaroid:nth-child(1) { transition-delay: 100ms; }
+.scrapbook.is-in .polaroid:nth-child(2) { transition-delay: 220ms; }
+.scrapbook.is-in .polaroid:nth-child(3) { transition-delay: 340ms; }
+.scrapbook.is-in .polaroid:nth-child(4) { transition-delay: 460ms; }
+.scrapbook.is-in .polaroid:nth-child(5) { transition-delay: 580ms; }
+.scrapbook.is-in .polaroid:nth-child(6) { transition-delay: 700ms; }
+
+.polaroid:hover {
+  z-index: 10;
+  transform: rotate(0deg) scale(1.06) translateY(-8px) !important;
+  box-shadow: 0 36px 64px -12px rgba(0,0,0,0.6), 0 14px 22px -8px rgba(0,0,0,0.45);
+  transition-delay: 0ms;
+}
+
+.polaroid img {
+  width: 100%;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  display: block;
+  filter: sepia(0.18) saturate(0.85) contrast(1.05);
+}
+
+.polaroid .caption {
+  margin-top: 14px;
+  text-align: center;
+  font-family: 'Caveat', cursive;
+  font-size: 1.2rem;
+  color: var(--charcoal);
+  line-height: 1.2;
+}
+
+.polaroid .caption-meta {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--charcoal);
+  opacity: 0.55;
+  margin-top: 6px;
+}
+
+.polaroid.p1 { top: 2%;  left: 3%; }
+.polaroid.p2 { top: 6%;  left: 28%; }
+.polaroid.p3 { top: 0;   left: 55%; }
+.polaroid.p4 { top: 8%;  left: 78%; }
+.polaroid.p5 { top: 46%; left: 14%; }
+.polaroid.p6 { top: 44%; left: 48%; }
+
+@media (max-width: 1100px) {
+  .polaroid.p4 { left: 70%; }
+}
+@media (max-width: 900px) {
+  .scrapbook {
+    min-height: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    perspective: none;
+    padding: 0 0.5rem;
+  }
+  .polaroid {
+    position: relative;
+    top: auto !important;
+    left: auto !important;
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+  .polaroid:hover { transform: scale(1.02) !important; }
+}
+@media (max-width: 560px) {
+  .scrapbook { grid-template-columns: 1fr; }
+}
+
+/* ============ WORKED EXAMPLE / STICKY TWO-COLUMN ============ */
+.example-section {
+  border-top: 1px solid var(--rule);
+  padding: 8rem 2.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.sticky-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  margin-top: 5rem;
+  align-items: start;
+}
+
+.sticky-pair .left {
+  position: sticky;
+  top: 6rem;
+  display: flex;
+  flex-direction: column;
+  padding-right: 1rem;
+}
+
+.example-passage-label {
+  font-size: 10px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 2rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.example-passage-label::before {
+  content: '';
+  width: 2rem; height: 1px;
+  background: var(--gold);
+  display: inline-block;
+}
+
+.example-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.65rem;
+  line-height: 1.55;
+  color: var(--cream);
+  padding-left: 1.75rem;
+  border-left: 2px solid var(--gold);
+  margin-bottom: 2.5rem;
+}
+
+.example-source {
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--sand-dim);
+  padding-left: 1.75rem;
+}
+
+.example-analysis {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.analysis-block {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 900ms var(--ease-quiet), transform 900ms var(--ease-quiet);
+}
+
+.analysis-block.is-in { opacity: 1; transform: none; }
+
+.analysis-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 11px;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.25rem;
+}
+
+.analysis-tag .dot {
+  width: 7px; height: 7px;
+  background: var(--gold);
+  border-radius: 50%;
+}
+
+.analysis-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.45rem;
+  line-height: 1.55;
+  color: var(--cream);
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.005em;
+}
+
+.analysis-text .quoted {
+  font-style: italic;
+  color: var(--gold-soft);
+}
+
+.analysis-note {
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: var(--sand);
+  max-width: 50ch;
+}
+
+.analysis-note strong {
+  color: var(--gold-soft);
+  font-weight: 400;
+  font-style: italic;
+}
+
+@media (max-width: 900px) {
+  .sticky-pair { grid-template-columns: 1fr; gap: 3rem; }
+  .sticky-pair .left { position: static; height: auto; padding-right: 0; }
+  .example-section { padding: 5rem 1.5rem; }
+}
+
+/* ============ NOTE TO MS MICCA ============ */
+.note-section {
+  border-top: 1px solid var(--rule);
+  padding: 10rem 2.5rem;
+  max-width: 860px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.note-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 700ms var(--ease-quiet), transform 700ms var(--ease-quiet);
+}
+
+.note-section.is-in .note-eyebrow { opacity: 1; transform: none; }
+
+.note-rule {
+  width: 1px;
+  height: 0;
+  background: var(--gold);
+  margin: 3rem auto;
+  transition: height 1000ms var(--ease-quiet) 300ms;
+}
+
+.note-section.is-in .note-rule { height: 4rem; }
+
+.note-body {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.35rem, 2.4vw, 1.7rem);
+  line-height: 1.6;
+  color: var(--cream);
+  font-style: italic;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1000ms var(--ease-emphasis) 500ms, transform 1000ms var(--ease-emphasis) 500ms;
+}
+
+.note-section.is-in .note-body { opacity: 1; transform: none; }
+
+.note-body em {
+  color: var(--gold);
+  font-style: italic;
+}
+
+.note-sign {
+  margin-top: 3.5rem;
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--sand-dim);
+  opacity: 0;
+  transition: opacity 800ms var(--ease-quiet) 900ms;
+}
+
+.note-section.is-in .note-sign { opacity: 0.7; }
+
+@media (max-width: 600px) {
+  .note-section { padding: 6rem 1.5rem; }
+}
+
+/* ============ FOOTER ============ */
+footer {
+  border-top: 1px solid var(--rule);
+  padding: 4rem 2.5rem 3rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.footer-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.25rem;
+  color: var(--cream);
+}
+
+.footer-brand .gold { color: var(--gold); font-weight: 500; }
+
+.footer-meta {
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--sand-dim);
+  line-height: 1.9;
+  text-align: right;
+}
+
+@media (max-width: 600px) {
+  footer { flex-direction: column; align-items: flex-start; padding: 3rem 1.5rem; }
+  .footer-meta { text-align: left; }
+}
+
+/* ============ REDUCED MOTION ============ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .hero-seal .seal-ring { animation: none !important; }
+}
+
+/* ============ TOUCH FALLBACK ============ */
+@media (pointer: coarse) {
+  .polaroid:hover {
+    transform: rotate(var(--r, 0deg)) scale(1.02) !important;
+    box-shadow: 0 20px 40px -10px rgba(0,0,0,0.45);
+  }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">Ms <span class="gold">Micca</span> · English 9</div>
+  <div class="nav-meta">Lesson Archive · MMXXIV</div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-seal" aria-hidden="true">
+    <svg class="seal-ring" viewBox="0 0 200 200">
+      <defs>
+        <path id="circle-path" d="M 30, 100 a 70,70 0 1,1 140,0 a 70,70 0 1,1 -140,0" />
+      </defs>
+      <circle cx="100" cy="100" r="82" fill="none" stroke="rgba(201,162,39,0.18)" stroke-width="0.5"/>
+      <circle cx="100" cy="100" r="62" fill="none" stroke="rgba(201,162,39,0.45)" stroke-width="0.5"/>
+      <text font-family="Inter, sans-serif" font-size="9" letter-spacing="3.2" fill="#C9A227">
+        <textPath href="#circle-path" startOffset="0">·  ENGLISH NINE  ·  MS MICCA  ·  LESSON ARCHIVE  ·  </textPath>
+      </text>
+    </svg>
+    <div class="seal-center">M</div>
+  </div>
+
+  <div class="hero-eyebrow">English 9 · Ms Micca · A Lesson Remembered</div>
+
+  <h1>How to read a sentence <em>like it means something.</em></h1>
+
+  <p class="hero-sub">
+    A small archive of the year we learned that a paragraph is not a thought until it has a point, a piece of the text, and the patience to say why. We called it P.E.E. — and it changed the way we read.
+  </p>
+
+  <a href="#framework" class="hero-cta">
+    Open the lesson
+    <span class="arrow">→</span>
+  </a>
+
+  <div class="hero-corner">
+    Vol. 01<br>
+    The P.E.E. Framework
+  </div>
+</section>
+
+<!-- ============ P.E.E. FRAMEWORK ============ -->
+<section class="section pee-section" id="framework">
+  <div class="section-eyebrow">The Framework</div>
+  <h2 class="section-title">Three sentences, in <em>order.</em></h2>
+  <p class="section-lede">
+    Ms Micca said the same thing every lesson: point, evidence, explanation. Say what you think. Prove it with the text. Then say why the proof proves the thought. Below — in her words.
+  </p>
+
+  <div class="pee-grid">
+    <div class="pee-card">
+      <div class="pee-num">— 01 —</div>
+      <div class="pee-letter">P</div>
+      <h3 class="pee-name">Point</h3>
+      <p class="pee-desc">
+        Make a claim. One sentence. Arguable. Not a fact about the text — a position on it. If a reasonable person could disagree, you have a point. If they couldn't, you have a summary.
+      </p>
+      <div class="pee-rule"></div>
+      <p class="pee-example">
+        Steinbeck presents Curley's wife as lonely before she is dangerous.
+        <span class="speaker">— a point</span>
+      </p>
+    </div>
+
+    <div class="pee-card">
+      <div class="pee-num">— 02 —</div>
+      <div class="pee-letter">E</div>
+      <h3 class="pee-name">Evidence</h3>
+      <p class="pee-desc">
+        A quote from the text. Short. Honest. Embedded into your own sentence so it reads like one breath — never dropped in cold, never longer than it needs to be. Pick the words that do work.
+      </p>
+      <div class="pee-rule"></div>
+      <p class="pee-example">
+        She stood "looking in" at the men, her voice "soft."
+        <span class="speaker">— the evidence</span>
+      </p>
+    </div>
+
+    <div class="pee-card">
+      <div class="pee-num">— 03 —</div>
+      <div class="pee-letter">E</div>
+      <h3 class="pee-name">Explanation</h3>
+      <p class="pee-desc">
+        Connect them. Why does this evidence prove this point? Zoom in on the verb, the adjective, the punctuation. Then zoom out — what does it mean for the whole text, the whole character, the whole argument?
+      </p>
+      <div class="pee-rule"></div>
+      <p class="pee-example">
+        The verb "looking in" places her outside the room before it places her outside the law — she is excluded before she is feared.
+        <span class="speaker">— the explanation</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SCATTERED POSTCARDS / READING LIST ============ -->
+<section class="section postcards-section">
+  <div class="section-eyebrow">The Reading List</div>
+  <h2 class="section-title">A shelf of <em>dog-eared</em> things.</h2>
+  <p class="section-lede">
+    The texts we circled, underlined, and argued about — each one a different way to find a point worth making. Hover any postcard to bring it to the front of the pile.
+  </p>
+
+  <div class="scrapbook">
+    <div class="polaroid p1" data-rotation="-8">
+      <img src="https://picsum.photos/seed/of-mice-and-men-steinbeck/400/500" alt="Of Mice and Men">
+      <div class="caption">
+        Of Mice and Men
+        <span class="caption-meta">Steinbeck · 1937</span>
+      </div>
+    </div>
+    <div class="polaroid p2" data-rotation="6">
+      <img src="https://picsum.photos/seed/macbeth-shakespeare-scotland/400/500" alt="Macbeth">
+      <div class="caption">
+        Macbeth
+        <span class="caption-meta">Shakespeare · 1606</span>
+      </div>
+    </div>
+    <div class="polaroid p3" data-rotation="-4">
+      <img src="https://picsum.photos/seed/highwayman-noyes-moor/400/500" alt="The Highwayman">
+      <div class="caption">
+        The Highwayman
+        <span class="caption-meta">Noyes · 1906</span>
+      </div>
+    </div>
+    <div class="polaroid p4" data-rotation="9">
+      <img src="https://picsum.photos/seed/sonnet-eighteen-shakespeare/400/500" alt="Sonnet 18">
+      <div class="caption">
+        Sonnet 18
+        <span class="caption-meta">Shakespeare · 1609</span>
+      </div>
+    </div>
+    <div class="polaroid p5" data-rotation="-7">
+      <img src="https://picsum.photos/seed/night-elie-wiesel-memoir/400/500" alt="Night">
+      <div class="caption">
+        Night
+        <span class="caption-meta">Wiesel · 1960</span>
+      </div>
+    </div>
+    <div class="polaroid p6" data-rotation="5">
+      <img src="https://picsum.photos/seed/lamb-to-the-slaughter-dahl/400/500" alt="Lamb to the Slaughter">
+      <div class="caption">
+        Lamb to the Slaughter
+        <span class="caption-meta">Dahl · 1953</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WORKED EXAMPLE / STICKY ============ -->
+<section class="section example-section">
+  <div class="section-eyebrow">A Worked Example</div>
+  <h2 class="section-title">One paragraph, <em>broken open.</em></h2>
+  <p class="section-lede">
+    A paragraph built with P.E.E. On the left, the passage we were reading — it stays with you as you scroll. On the right, the three moves that made the paragraph work, annotated the way Ms Micca would mark up our essays.
+  </p>
+
+  <div class="sticky-pair">
+    <div class="left">
+      <div class="example-passage-label">The Passage</div>
+      <p class="example-quote">
+        She was suddenly apprehensive. The wind had risen. She leapt — and the moor took her, the way the moor takes everything that stands still long enough.
+      </p>
+      <div class="example-source">Anon. · The Moor · Chapter IV</div>
+    </div>
+
+    <div class="example-analysis">
+
+      <div class="analysis-block">
+        <div class="analysis-tag"><span class="dot"></span> Point</div>
+        <p class="analysis-text">
+          The writer presents the moor as a force that does not merely threaten the protagonist — it <span class="quoted">absorbs</span> her.
+        </p>
+        <p class="analysis-note">
+          A single claim. Arguable. Someone else could read the moor as merely atmospheric; this paragraph insists otherwise. That insistence is what makes it a point, not a summary.
+        </p>
+      </div>
+
+      <div class="analysis-block">
+        <div class="analysis-tag"><span class="dot"></span> Evidence</div>
+        <p class="analysis-text">
+          The narrator tells us <span class="quoted">"the moor took her, the way the moor takes everything that stands still long enough."</span>
+        </p>
+        <p class="analysis-note">
+          The quotation is embedded — it reads as part of the writer's own sentence. The verb <strong>takes</strong> is the load-bearing word, so it is kept inside the quotation marks, where it belongs. Nothing is dropped in cold.
+        </p>
+      </div>
+
+      <div class="analysis-block">
+        <div class="analysis-tag"><span class="dot"></span> Explanation</div>
+        <p class="analysis-text">
+          The verb <span class="quoted">"takes"</span> does two things at once — it implies theft (the moor steals her) and inevitability (the moor takes everything). By repeating it across both clauses, the writer turns a single moment of fear into a statement about the whole landscape.
+        </p>
+        <p class="analysis-note">
+          Zoom in on the word. Then zoom out: the repetition is what makes the moor feel like a slow, patient collector of lives. That zoom-in-then-out is the explanation doing its job — and it is the part Ms Micca always circled twice in red pen.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ NOTE TO MS MICCA ============ -->
+<section class="section note-section">
+  <div class="note-eyebrow">A Note</div>
+  <div class="note-rule"></div>
+  <p class="note-body">
+    Thank you for making us slow down. For making us read a sentence twice. For refusing to accept <em>"it just is"</em> as an answer — and for showing us, again and again, that a paragraph is just three careful sentences in the right order.
+  </p>
+  <div class="note-sign">— Your English 9 class, with love</div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="footer-brand">Ms <span class="gold">Micca</span> · English 9</div>
+  <div class="footer-meta">
+    A student archive · 2024<br>
+    Built to remember P.E.E.
+  </div>
+</footer>
+
+<script>
+  // Apply scattered rotations to polaroids
+  document.querySelectorAll('.polaroid').forEach(p => {
+    const r = parseFloat(p.dataset.rotation);
+    if (!isNaN(r)) p.style.setProperty('--r', `${r}deg`);
+  });
+
+  // Intersection observer for section reveals
+  const sectionIO = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('is-in');
+        sectionIO.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+
+  document.querySelectorAll('.section').forEach(el => sectionIO.observe(el));
+
+  // Scrapbook enter
+  const scrapbookIO = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('is-in');
+        scrapbookIO.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.18 });
+
+  document.querySelectorAll('.scrapbook').forEach(el => scrapbookIO.observe(el));
+
+  // Analysis blocks: stagger as they enter
+  const analysisIO = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('is-in');
+        analysisIO.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.25, rootMargin: '0px 0px -10% 0px' });
+
+  document.querySelectorAll('.analysis-block').forEach(el => analysisIO.observe(el));
+</script>
+
+</body>
+</html>
